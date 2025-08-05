@@ -52,7 +52,47 @@ export default function useHotBookmarks() {
         setLoading(false);
       }
     };
+    const refetch = async () => {
+      if(!user) return;
 
+      setLoading(true);
+      setHasMore(true);
+      setLastDoc(null);
+      setBookmarks([]);
+
+      try {
+        const q = query(
+        collection(db, "bookmarks"),
+        orderBy("liked", "desc"),
+        limit(limitNumber)
+        );
+      const snapshot = await getDocs(q);
+
+      const freshBookmarks = snapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        title: data.title,
+        url: data.url,
+        description: data.description ?? "",
+        createdAt: data.createdAt ?? null,
+        liked: data.liked ?? 0,
+        userID: data.userID ?? "",
+        email: data.email ?? "",
+        image: data.Image ?? "",
+      };
+    });
+
+      setBookmarks(freshBookmarks);
+      setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
+      if(snapshot.docs.length < limitNumber) setHasMore(false);
+
+     } catch (err) {
+      console.error("Error refetching bookmarks", err);
+      } finally {
+       setLoading(false);
+      }
+    };
     
     useEffect(()=>{
       if(user) fetch();
@@ -60,5 +100,5 @@ export default function useHotBookmarks() {
         
 
 
-    return {bookmarks, loading ,refetch:fetch, fetchMore:fetch,hasMore};
+    return {bookmarks, loading ,refetch, fetchMore:fetch, hasMore};
 }

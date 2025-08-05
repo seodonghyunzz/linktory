@@ -16,7 +16,6 @@ type Props = {
 export default function BookmarkCard({ data, currentUser, refetch }: Props) {
   const [hasLiked, setHasLiked] = useState(false);
   const { id } = data;
-
    useEffect(() => {
     if (!currentUser) return;
 
@@ -42,12 +41,16 @@ export default function BookmarkCard({ data, currentUser, refetch }: Props) {
                 liked: increment(-1),
               });
                 setHasLiked(false);
+                
+                
         } else {
               await setDoc(likeRef, {});
               await updateDoc(bookmarkRef, {
                 liked: increment(1),
               });
+              
               setHasLiked(true);
+              
               }
               refetch();
               } catch (err) {

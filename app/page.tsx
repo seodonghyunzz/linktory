@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   
   const bookmarks = await getRecommendedBookmarks();
-  console.log(bookmarks)
+  
   return (
     <main className="max-w-[800px] mx-auto px-4 py-12">
       <h1 className="mb-8 text-3xl font-bold text-center">📌 추천 북마크</h1>

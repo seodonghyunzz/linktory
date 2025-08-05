@@ -12,10 +12,10 @@ export default function HotPage() {
   const user = useAuthStore(state=>state.user)
   const authLoading = useAuthStore(state=>state.authLoading)
   const router = useRouter();
-  const { bookmarks, loading , fetchMore, hasMore } = useHotBookmarks();
+  const { bookmarks, loading , fetchMore, hasMore, refetch } = useHotBookmarks();
   const [input , setInput] = useState('')
 
-
+   
    useEffect(() => {
     if (user === null && !authLoading) {
       router.push("/login");
@@ -46,6 +46,7 @@ export default function HotPage() {
             currentUser={user?.uid}
             search={input}
             loading={loading}
+            refetch = {refetch}
           />
           {hasMore && (
             <div className="h-10 text-center col-span-full">

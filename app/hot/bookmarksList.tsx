@@ -13,7 +13,7 @@ type Props = {
 
 export default function BookmarkList({ bookmarks,  search, loading , currentUser, refetch}: Props) {
   if (loading) return <Loading/>
-
+  
   const filtered = bookmarks.filter((bm) =>
     bm.title?.toLowerCase().includes(search.toLowerCase())||
     bm.description?.toLowerCase().includes(search.toLowerCase())
@@ -25,7 +25,7 @@ export default function BookmarkList({ bookmarks,  search, loading , currentUser
   return (
     <>
       {filtered.map((bm) => (
-        <BookmarkCard key={bm.id} data={bm} currentUser={currentUser} />
+        <BookmarkCard key={bm.id} data={bm} currentUser={currentUser} refetch = {refetch} />
       ))}
     </>
   );
