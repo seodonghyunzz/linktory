@@ -10,9 +10,10 @@ import { doc, getDoc, deleteDoc, updateDoc, setDoc, increment } from "firebase/f
 type Props = {
     data: Bookmark;
     currentUser?: string;
+    refetch: ()=>void;
 }
 
-export default function BookmarkCard({ data, currentUser}: Props) {
+export default function BookmarkCard({ data, currentUser, refetch }: Props) {
   const [hasLiked, setHasLiked] = useState(false);
   const { id } = data;
 
@@ -48,6 +49,7 @@ export default function BookmarkCard({ data, currentUser}: Props) {
               });
               setHasLiked(true);
               }
+              refetch();
               } catch (err) {
               console.error("좋아요 토글 실패:", err);
               }

@@ -7,10 +7,11 @@ type Props = {
     currentUser?: string;
     search: string;
     loading: boolean;
+    refetch: ()=>void;
 }
 
 
-export default function BookmarkList({ bookmarks,  search, loading , currentUser}: Props) {
+export default function BookmarkList({ bookmarks,  search, loading , currentUser, refetch}: Props) {
   if (loading) return <Loading/>
 
   const filtered = bookmarks.filter((bm) =>

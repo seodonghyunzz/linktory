@@ -25,7 +25,6 @@ export default function HotPage() {
     if(authLoading){
       return <Loading/>
     }
-    console.log(bookmarks)
    return (
     <div className="flex w-full max-w-[1000px] p-2 mx-auto flex-col">
       <h1 className="mb-4 text-2xl font-bold">🔥 인기 북마크</h1>
@@ -50,7 +49,6 @@ export default function HotPage() {
           />
           {hasMore && (
             <div className="h-10 text-center col-span-full">
-              <p>load more...</p>
               <InfiniteScrollSentinel
               onIntersect={() => {
               if (!loading && hasMore) fetchMore();
