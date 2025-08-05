@@ -7,11 +7,13 @@ import { Plus} from "lucide-react";
 import useMyBookmarks from './useMyBookmarks';
 import BookmarkList from './bookmarksList';
 import AddBookmarksModal from './addBookmarksModal';
+import Loading from '../component/Loading';
 
 export default function BookmarksPage() {
   const user = useAuthStore((state) => state.user)
   const router = useRouter()
-  
+  const authLoading = useAuthStore(state=>state.authLoading)
+
   const [input,setInput] = useState('')
   const {bookmarks, loading , refetch} = useMyBookmarks();
   const [sortOption, setSortOption]= useState<'latest'|'liked'>('latest')
@@ -20,12 +22,14 @@ export default function BookmarksPage() {
 
 
   useEffect(() => {
-    if (user === null) {
-      router.push('/login')
-    }
-  }, [user, router])
-
-  if (!user) return null
+      if (user === null && !authLoading) {
+        router.push("/login");
+      }
+      }, [user, router]);
+  
+      if(authLoading){
+        return <Loading/>
+      }
   
 
 
