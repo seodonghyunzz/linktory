@@ -1,9 +1,11 @@
 import { adminDB } from "@/lib/firebaseAdmin";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const snapshot = await adminDB.collection("recommendedBookmarks").get();
   const bookmarks = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-
+  
   return (
     <main className="max-w-[800px] mx-auto px-4 py-12">
       <h1 className="mb-8 text-3xl font-bold text-center">📌 추천 북마크</h1>
