@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 export default async function Home() {
   
   const bookmarks = await getRecommendedBookmarks();
@@ -7,7 +5,7 @@ export default async function Home() {
   return (
     <main className="max-w-[800px] mx-auto px-4 py-12">
       <h1 className="mb-8 text-3xl font-bold text-center">📌 추천 북마크</h1>
-      <div className="gap-4 space-y-4 cursor-pointer columns-1 sm:columns-2">
+      <div className="gap-4 space-y-4 cursor-pointer columns-2 sm:columns-3">
         {bookmarks.map((bm: any) => (
       <a
         key={bm.name}

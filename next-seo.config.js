@@ -4,7 +4,7 @@ const defaultSEO = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://linktory.vercel.app",
+    url: "https://linktory-nine.vercel.app/",
     site_name: "Linktory",
     images: [
       {
