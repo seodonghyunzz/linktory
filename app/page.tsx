@@ -1,3 +1,24 @@
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+    openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: "https://linktory-nine.vercel.app/",
+    siteName: "Linktory",
+    images: [
+      {
+        url: "https://linktory-nine.vercel.app/thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Linktory 대표 이미지",
+      },
+    ],
+  },
+  
+};
+
 export default async function Home() {
   
   const bookmarks = await getRecommendedBookmarks();

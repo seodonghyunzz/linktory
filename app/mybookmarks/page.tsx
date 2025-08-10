@@ -9,6 +9,9 @@ import BookmarkList from './bookmarksList';
 import AddBookmarksModal from './addBookmarksModal';
 import Loading from '../component/Loading';
 
+
+
+
 export default function BookmarksPage() {
   const user = useAuthStore((state) => state.user)
   const router = useRouter()
@@ -20,21 +23,17 @@ export default function BookmarksPage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
 
-
   useEffect(() => {
       if (user === null && !authLoading) {
         router.push("/login");
       }
       }, [user, router]);
   
-      if(authLoading){
-        return <Loading/>
-      }
-  
-
-
+     
   return (
-    <div className="flex w-full max-w-[1000px] p-2 mx-auto flex-col">
+    <>
+    { authLoading ? <Loading/>
+    :<div className="flex w-full max-w-[1000px] p-2 mx-auto flex-col">
         <div className='flex justify-between p-2'>
         <div className='flex w-2/3'>
           <input
@@ -59,6 +58,7 @@ export default function BookmarksPage() {
       </div>
       {isAddModalOpen&&<AddBookmarksModal refetch= {refetch} onClose={()=>setIsAddModalOpen(false)}/>}
     </div>
-     
+    }
+    </>
   )
 }
