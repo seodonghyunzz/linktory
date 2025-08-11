@@ -4,8 +4,26 @@ import AuthListener from "./component/AuthListener";
 import NavBar from "./component/NavBar";
 
 export const metadata: Metadata = {
-  title: "Linktory - 북마크 공유 플랫폼",
+  title: {
+    default: "Linktory",
+    template: "%s - Linktory"
+  },
   description: "유저가 공유한 유용한 링크를 모아보세요.",
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: "https://linktory-nine.vercel.app/",
+    siteName: "Linktory",
+    images: [
+      {
+        url: "https://linktory-nine.vercel.app/thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Linktory 대표 이미지",
+      },
+    ],
+  },
+  
 };
 
 export default function RootLayout({

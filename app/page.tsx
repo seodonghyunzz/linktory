@@ -2,21 +2,8 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-    openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "https://linktory-nine.vercel.app/",
-    siteName: "Linktory",
-    images: [
-      {
-        url: "https://linktory-nine.vercel.app/thumbnail.png",
-        width: 1200,
-        height: 630,
-        alt: "Linktory 대표 이미지",
-      },
-    ],
-  },
-  
+  title: "추천 북마크 - Linktory",
+  description: "Linktory가 추천하는 북마크들.",
 };
 
 export default async function Home() {
