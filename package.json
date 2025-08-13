@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
@@ -28,7 +29,9 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
+    "next-sitemap": "^4.2.3",
     "postcss": "^8.5.6",
     "typescript": "^5"
   }
+
 }

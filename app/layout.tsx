@@ -23,6 +23,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  verification: {
+    google: 'goQIMOu7pJHAebaNL2Hnabo1chO2PmfReaapWLp2gck', 
+  },
   
 };
 
