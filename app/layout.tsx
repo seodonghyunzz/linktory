@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 import AuthListener from "./component/AuthListener";
 import NavBar from "./component/NavBar";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: {
     default: "Linktory",
-    template: "%s - Linktory"
+    template: "%s - Linktory",
   },
   description: "유저가 공유한 유용한 링크를 모아보세요.",
   openGraph: {
@@ -24,9 +25,8 @@ export const metadata: Metadata = {
     ],
   },
   verification: {
-    google: 'goQIMOu7pJHAebaNL2Hnabo1chO2PmfReaapWLp2gck', 
+    google: "goQIMOu7pJHAebaNL2Hnabo1chO2PmfReaapWLp2gck",
   },
-  
 };
 
 export default function RootLayout({
@@ -37,11 +37,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="">
-        <AuthListener/>
+        <AuthListener />
         <header>
-          <NavBar/>
+          <NavBar />
         </header>
         <main>{children}</main>
+        <Analytics />
       </body>
     </html>
   );
